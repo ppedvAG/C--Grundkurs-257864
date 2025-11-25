@@ -124,26 +124,117 @@ class Program
 		//vorUndNachnamen[1,2] = "Smith";
 
 		// Bedingungen (if & else)
-		Console.WriteLine("Geben Sie eine Zahl ein: ");
-		int a = int.Parse(Console.ReadLine());
-		Console.WriteLine("Geben Sie eine weitere Zahl ein: ");
-		int b = int.Parse(Console.ReadLine());
+		//Console.WriteLine("Geben Sie eine Zahl ein: ");
+		//int a = int.Parse(Console.ReadLine());
+		//Console.WriteLine("Geben Sie eine weitere Zahl ein: ");
+		//int b = int.Parse(Console.ReadLine());
 
-		if (a == b)
-		{
-			Console.WriteLine("gleich");
-		}
-		else if (a < b)
-			Console.WriteLine($"{a} ist kleiner als {b}");
-		else
-			Console.WriteLine($"{a} ist größer als {b}");
+		//if (a == b)
+		//{
+		//	Console.WriteLine("gleich");
+		//}
+		//else if (a < b)
+		//	Console.WriteLine($"{a} ist kleiner als {b}");
+		//else
+		//	Console.WriteLine($"{a} ist größer als {b}");
 
-		Console.WriteLine("geben sie den Namen ein: ");
-		string name = Console.ReadLine();
-		if (a == b && (name.StartsWith("D") || name.StartsWith("d")))
+		//Console.WriteLine("geben sie den Namen ein: ");
+		//string name = Console.ReadLine();
+		//if (a == b && (name.StartsWith("D") || name.StartsWith("d")))
+		//{
+		//	Console.WriteLine("Der Name fängt mit D an und die beiden Zahlen sind gleich groß");
+		//}
+
+		// Schleifen (for, while, do-while)
+		//bool hatGeklappt=false;
+		//int zahl;
+		//do
+		//{
+		//	Console.WriteLine("gib eine Zahl ein: ");
+		//	hatGeklappt = int.TryParse(Console.ReadLine(), out zahl);
+		//	if(!hatGeklappt)
+		//	{
+		//		Console.WriteLine("Das war keine gültige Zahl. Bitte versuche es erneut.");
+		//	}
+		//} while(!hatGeklappt);
+
+		//// Von hier aus kann man sich sicher sein, dass 'zahl' eine gültige Ganzzahl ist
+		//Console.WriteLine(zahl);
+
+
+		//while(true)
+		//{
+		//	Thread.Sleep(10000);
+		//	break;
+
+		//}
+
+		// for schleife
+
+		//for(int i = 1; i <= 100; i++)
+		//{
+		//	Console. WriteLine($"Durchlauf Nummer {i}");
+		//}
+
+		//// for schleife über ein Array
+
+		//int[] zahlen = new int[] { 5, 10, 15, 20, 25 };
+		//for (int i = 0; i < zahlen.Length; i++)
+		//{
+		//	Console.WriteLine($"Element an Index {i} hat den Wert {zahlen[i]}");
+		//}
+
+		//// foreach schleife über ein Array
+
+		//foreach(int element in zahlen)
+		//{
+		//	Console.WriteLine($"Aktueller Wert: {element}");
+		//}
+
+		// Enums erstellen und verwenden
+
+		Wochentag heute = Wochentag.Dienstag;
+		Wochentag morgen = Wochentag.Mittwoch;
+		Console.WriteLine($"gib einen Wochentag (1-7) ein.");
+		int nummerTag = int.Parse(Console.ReadLine());
+		Wochentag eingegebenerTag = (Wochentag)nummerTag;
+		//Wochentag eingegebenerTag = (Wochentag) int.Parse(Console.ReadLine());
+
+		if(eingegebenerTag == Wochentag.Samstag || eingegebenerTag == Wochentag.Sonntag)
 		{
-			Console.WriteLine("Der Name fängt mit D an und die beiden Zahlen sind gleich groß");
+			Console.WriteLine("Es ist Wochenende");
 		}
+
+		if((int)eingegebenerTag < 6)
+		{
+			Console.WriteLine("Es ist ein Wochentag");
+		}
+
+		// switch Anweisung
+
+		switch(eingegebenerTag)
+		{
+			case Wochentag.Montag:
+				Console.WriteLine("Beginn der Woche");
+				break;
+			case Wochentag.Freitag:
+			case Wochentag.Samstag:
+			case Wochentag.Sonntag:
+				Console.WriteLine("Ende der Woche");
+				break;
+			default:
+				Console.WriteLine("Mittendrin in der Woche");
+				break;
+		}
+
+		// String in Enum konvertieren
+		string stringTag = "Montag";
+		Wochentag konvertierterTag = (Wochentag) Enum.Parse(typeof(Wochentag), stringTag);
 
 	}
+	enum Wochentag { Montag = 1, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag };
+
+
+
+
 }
