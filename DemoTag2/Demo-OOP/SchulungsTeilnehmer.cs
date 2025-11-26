@@ -1,0 +1,83 @@
+﻿
+namespace Demo_OOP
+{
+	// klasse SchulungsTeilnehmer mit Eigenschaften und Methoden und Konstruktoren
+	public class SchulungsTeilnehmer
+	{
+		// neue Variante für eine Eigenschaft (nur lesbar) BEVORZUGT
+		public string Vorname { get; } = "Unbekannt"; // Standardwert "Unbekannt"
+
+		// alte Variante für eine Eigenschaft (nur lesbar)
+		private string nachname = "Unbekannt"; // Standardwert "Unbekannt"
+
+		public string GetNachname()
+		{
+			return nachname;
+		}
+
+		// Dritte Eigenschaft Alter, die nicht kleiner als 0 sein darf
+		private int alter;
+		public int Alter
+		{
+			get { return alter; }
+			set
+			{
+				if(value < 0)
+				{
+					alter = 0;
+				} else
+				{
+					alter = value;
+				}
+			}
+		}
+
+		// alter Variante für eine Eigenschaft, die nicht kleiner als 0 sein darf
+		private int anzahlBesuche = 0; // Standardwert 0
+		public int GetAnzahlBesuche()
+		{
+			return anzahlBesuche;
+		}
+		public void SetAnzahlBesuche(int value)
+		{
+			if (value < 0)
+			{
+				anzahlBesuche = 0;
+			}
+			else
+			{
+				anzahlBesuche = value;
+			}
+		}
+
+
+		// Standard-Konstruktor (ohne Parameter) exsistiert automatisch, wenn kein anderer Konstruktor definiert ist
+		//public SchulungsTeilnehmer()
+		//{
+
+		//}
+
+		// Methode Teilnehmer meldet sich
+		public void Melden()
+		{
+			Console.WriteLine($"{Vorname} {nachname} möchte etwas sagen!");
+		}
+
+		// Konstruktor mit Parametern um die Eigenschaften Vorname und Nachname zu initialisieren
+		public SchulungsTeilnehmer(string vorname, string nachname)
+		{
+			alter = 0; // Standardwert für Alter setzen
+			Vorname = vorname;
+			this.nachname = nachname; // this verweist auf die aktuelle Instanz der Klasse (alte schreibweise, weil felder klein geschrieben werden)
+		}
+
+		// Konstruktor mit allen Parametern
+		public SchulungsTeilnehmer(string vorname, string nachname, int alter, int anzahlBesuche) : this(vorname, nachname)
+		{ 
+			Alter = alter; 
+			SetAnzahlBesuche(anzahlBesuche); 
+		}
+
+
+	}
+}
