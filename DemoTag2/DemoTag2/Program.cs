@@ -22,7 +22,15 @@
 		bool erfolg = ZahlEinlesen(out int zahl1);
 		erfolg = ZahlEinlesen(out zahl1, "Bitte Zahl eingeben");
 
+		// Automatische Arrays
+		int[] zahlen = new int[]{ 1, 2, 3, 4, 5 };
+		int ergebnis = SummeBerechnen(zahlen);
+
+		// mit params braucht man kein Array zu erstellen und kann die Werte direkt übergeben
+		int ergebnis2 = SummeBerechnen(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13);
+
 	}
+	// Überladene Methode
 	static private bool ZahlEinlesen(out int zahl)
 	{
 		Console.WriteLine("Zahl eingeben.");
@@ -35,6 +43,13 @@
 		Console.WriteLine(ausgabeText);
 		bool erfolg = int.TryParse(Console.ReadLine(), out zahl);
 		return erfolg;
+	}
+
+
+	// Automatische Arrays
+	static private int SummeBerechnen(params int[] zahlen)
+	{
+		return zahlen.Sum();
 	}
 }
 
