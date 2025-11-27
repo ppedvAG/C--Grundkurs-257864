@@ -1,4 +1,4 @@
-﻿namespace Lab09.Fahrzeuge
+﻿namespace Lab10.Fahrzeuge
 {
 	public abstract class Fahrzeug
 	{

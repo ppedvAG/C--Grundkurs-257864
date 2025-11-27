@@ -25,6 +25,14 @@ namespace DemoTag3
 			 return $"Tier: {Spezies}, Alter: {Alter}";
 		}
 
+		// Überschreibe die BreatheIn Methode, um das Zählen der Atemzüge zu ändern
+		public override void BreatheIn()
+		{
+			Console.WriteLine($"Einatmen...");
+			// Zugriff auf statische Eigenschaft CountBreaths über das Interface
+			IBreathable.CountBreaths+=2;
+		}
+
 
 		// Mit override kann ich eine Methode überschreiben, die in der Basisklasse als virtual deklariert wurde.
 		//public override string Info()

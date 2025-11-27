@@ -1,6 +1,6 @@
-﻿using Lab09.Fahrzeuge;
+﻿using Lab10.Fahrzeuge;
 
-namespace Lab09
+namespace Lab10
 {
 	public class Program
 	{

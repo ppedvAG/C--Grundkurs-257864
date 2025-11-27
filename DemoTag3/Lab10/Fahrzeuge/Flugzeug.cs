@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab09.Fahrzeuge
+namespace Lab10.Fahrzeuge
 {
 	internal class Flugzeug : Fahrzeug
 	{

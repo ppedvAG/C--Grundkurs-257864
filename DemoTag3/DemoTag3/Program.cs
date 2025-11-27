@@ -55,6 +55,13 @@
 			Lebewesen mensch = new Mensch("Max", "Mustermann", new DateTime(1990, 12, 15));
 			Lebewesen tier = new Tier("Hund", new DateTime(2018, 6, 1));
 
+			mensch.BreatheIn();
+			mensch.BreatheOut();
+			tier.BreatheIn();
+			tier.BreatheOut();
+			Console.WriteLine(mensch is IBreathable);
+			Console.WriteLine($"Anzahl der Atemzüge: {IBreathable.CountBreaths}");
+
 		}
 	}
 }
