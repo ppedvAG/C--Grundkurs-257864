@@ -6,48 +6,57 @@ namespace Lab10
 	{
 		public static void Main()
 		{
-			Fahrzeug[] fahrzeuge = new Fahrzeug[10];
+			Container container = new Container("Container 1");
+			Fahrzeug fahrzeug1 = Fahrzeug.GeneriereFahrzeug("Fahrzeug 1");
+			container = (Container)BeladeObjekt(container, fahrzeug1);
+			Console.WriteLine("Container 1 beladen mit: " + container.GeladenesFahrzeug.ToString());
 
-			// Fahrzeuge generieren
-			for (int i = 0; i<10; i++)
+			Schiff schiff1 = new Schiff("Schiff 1", 50, 5_000_000, 15);
+			Fahrzeug fahrzeug2 = Fahrzeug.GeneriereFahrzeug("Fahrzeug 2");
+			schiff1 = (Schiff)BeladeObjekt(fahrzeug2, schiff1);
+			Console.WriteLine(schiff1.Info());
+
+			Schiff schiff3 = new Schiff("Schiff 3", 60, 6_000_000, 20);
+			Schiff schiff4 = new Schiff("Schiff 4", 60, 6_000_000, 20);
+			schiff3 = (Schiff) BeladeObjekt(schiff3, schiff4, false);
+			Console.WriteLine(schiff3.Info());
+			schiff3.EntladeFahrzeug();
+			schiff4 = (Schiff) BeladeObjekt(schiff3, schiff4, true);
+			Console.WriteLine(schiff4.Info());
+
+		}
+
+		static Object BeladeObjekt(Object obj1, Object obj2)
+		{
+			if(obj1 is IBeladbar && obj2 is Fahrzeug)
 			{
-				fahrzeuge[i] = Fahrzeug.GeneriereFahrzeug("Name" + i);
-				Console.WriteLine(fahrzeuge[i].ToString());
-			}
-
-			// foreach ist hier nicht zu gebrauchen, weil wir auf die Elemente des Arrays zugreifen und diese verändern müssen
-			//foreach (Fahrzeug element in fahrzeuge)
-			//{
-			//	element = Fahrzeug.GeneriereFahrzeug("Name");
-			//}
-
-			Console.WriteLine("\n"+Fahrzeug.GetFahrzeugAnzahl());
-
-			int anzahlPKW = 0;
-			int anzahlSchiff = 0;
-			int anzahlFlugzeug = 0;
-
-			// Anzahl der Fahrzeugtypen zählen
-			foreach(Fahrzeug fz in fahrzeuge)
+				IBeladbar beladbaresObjekt = (IBeladbar)obj1;
+				beladbaresObjekt.BeladeFahrzeug((Fahrzeug)obj2);
+				return beladbaresObjekt;
+			} else if (obj2 is IBeladbar && obj1 is Fahrzeug)
 			{
-				if(fz is PKW)
-				{
-					anzahlPKW++;
-				} else if(fz is Schiff)
-				{
-					anzahlSchiff++;
-				} else
-				{
-					anzahlFlugzeug++;
-				}
+				IBeladbar beladbaresObjekt = (IBeladbar)obj2;
+				beladbaresObjekt.BeladeFahrzeug((Fahrzeug)obj1);
+				return beladbaresObjekt;
 			}
+			return null;
+		}
 
-			// Ergebnisse ausgeben
-			Console.WriteLine($"Anzahl PKW: {anzahlPKW}");
-			Console.WriteLine($"Anzahl Schiff: {anzahlSchiff}");
-			Console.WriteLine($"Anzahl Flugzeug: {anzahlFlugzeug}\n");
-
-			fahrzeuge[2].Hupen();
+		static Object BeladeObjekt(Object obj1, Object obj2, bool erstesAufZweites)
+		{
+			if (!erstesAufZweites && obj1 is IBeladbar && obj2 is Fahrzeug)
+			{
+				IBeladbar beladbaresObjekt = (IBeladbar)obj1;
+				beladbaresObjekt.BeladeFahrzeug((Fahrzeug)obj2);
+				return beladbaresObjekt;
+			}
+			else if (erstesAufZweites && obj2 is IBeladbar && obj1 is Fahrzeug)
+			{
+				IBeladbar beladbaresObjekt = (IBeladbar)obj2;
+				beladbaresObjekt.BeladeFahrzeug((Fahrzeug)obj1);
+				return beladbaresObjekt;
+			} 
+			return null;
 		}
 	}
 }

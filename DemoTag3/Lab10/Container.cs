@@ -1,45 +1,31 @@
-﻿using System;
+﻿using Lab10.Fahrzeuge;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab10.Fahrzeuge
+namespace Lab10
 {
-	internal class Schiff : Fahrzeug, IBeladbar
+	internal class Container: IBeladbar
 	{
-		public int Tiefgang { get; set; } // in Metern
+		public string Name { get; set; }
 
 		// Das Fahrzeug, das im Container geladen ist muss implementiert werden weil IBeladbar es vorschreibt
 		public Fahrzeug GeladenesFahrzeug { get; set; } = null;
-
-		public Schiff(string name, int maxGeschwindigkeit, double preis, int tiefgang)
-			: base(name, maxGeschwindigkeit, preis)
+		public Container(string name)
 		{
-			Tiefgang = tiefgang;
-		}
-
-		public override string Info()
-		{
-			// Info-Methode gibt auch die Ladung aus
-			return base.Info() + $" Tiefgang: {Tiefgang}, Ladung: {GeladenesFahrzeug.ToString()}";
-		}
-
-		// abstrakte Methode Hupen implementieren
-		public override void Hupen()
-		{
-			Console.WriteLine("Schiff Hupe: Tuuut Tuuut!");
+			Name = name;
 		}
 
 		// Methoden der Schnittstelle IBeladbar müssen implementiert werden (sie sind standardmäßig abstract)
 		public void BeladeFahrzeug(Fahrzeug fahrzeug)
 		{
-			if (GeladenesFahrzeug == null)
+			if(GeladenesFahrzeug == null)
 			{
 				GeladenesFahrzeug = fahrzeug;
 				Console.WriteLine($"Das Fahrzeug {fahrzeug.Name} wurde in den Container {Name} geladen.");
-			}
-			else
+			} else
 			{
 				Console.WriteLine($"Der Container {Name} ist bereits mit dem Fahrzeug {GeladenesFahrzeug.Name} beladen.");
 			}
@@ -47,7 +33,7 @@ namespace Lab10.Fahrzeuge
 
 		public Fahrzeug EntladeFahrzeug()
 		{
-			if (GeladenesFahrzeug == null)
+			if(GeladenesFahrzeug == null)
 			{
 				Console.WriteLine($"Der Container {Name} ist leer. Es kann kein Fahrzeug entladen werden.");
 				return null;
