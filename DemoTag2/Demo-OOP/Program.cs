@@ -30,6 +30,17 @@ namespace Demo_OOP
 			SchulungsTeilnehmer teilnehmer3 = new SchulungsTeilnehmer("", "", 30, 5);
 
 			teilnehmer3.Melden();
+
+			Console.WriteLine($"Anzahl Teilnehmer: {SchulungsTeilnehmer.AnzahlTeilnehmer}");
+			
+			//for(int i = 0; i<100000000; i++)
+			//{
+			//	SchulungsTeilnehmer  t = new SchulungsTeilnehmer("Test", "Teilnehmer");
+			//}
+			//Console.WriteLine($"Anzahl Teilnehmer nach Schleife: {SchulungsTeilnehmer.AnzahlTeilnehmer}");
+
+			Console.WriteLine(SchulungsTeilnehmer.GetClassDescription());
+
 		}
 	}
 }

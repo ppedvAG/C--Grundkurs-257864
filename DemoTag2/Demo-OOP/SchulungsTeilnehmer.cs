@@ -4,6 +4,10 @@ namespace Demo_OOP
 	// klasse SchulungsTeilnehmer mit Eigenschaften und Methoden und Konstruktoren
 	public class SchulungsTeilnehmer
 	{
+
+		// Statisches Member anzahlTeilnehmer um die Anzahl der erstellten Teilnehmer zu zählen
+		public static int AnzahlTeilnehmer { get; private set; } = 0;
+
 		// neue Variante für eine Eigenschaft (nur lesbar) BEVORZUGT
 		public string Vorname { get; } = "Unbekannt"; // Standardwert "Unbekannt"
 
@@ -13,6 +17,14 @@ namespace Demo_OOP
 		public string GetNachname()
 		{
 			return nachname;
+		}
+
+		// Statische Methode um die Beschreibung der Klasse zu erhalten
+		public static string GetClassDescription()
+		{
+			// Es existieren mehrere Teilnehmer mit verschiedenen Vornamen, deswegen können wir in einer Statischen Methode darauf nicht zugreifen
+			//Vorname = "";
+			return "Die Klasse SchulungsTeilnehmer repräsentiert einen Teilnehmer an einer Schulung. Eigenschaften: Vorname, nachname";
 		}
 
 		// Dritte Eigenschaft Alter, die nicht kleiner als 0 sein darf
@@ -66,6 +78,7 @@ namespace Demo_OOP
 		// Konstruktor mit Parametern um die Eigenschaften Vorname und Nachname zu initialisieren
 		public SchulungsTeilnehmer(string vorname, string nachname)
 		{
+			AnzahlTeilnehmer++; // Jedes Mal wenn ein neuer Teilnehmer erstellt wird, wird der Zähler erhöht
 			alter = 0; // Standardwert für Alter setzen
 			Vorname = vorname;
 			this.nachname = nachname; // this verweist auf die aktuelle Instanz der Klasse (alte schreibweise, weil felder klein geschrieben werden)
@@ -76,6 +89,12 @@ namespace Demo_OOP
 		{ 
 			Alter = alter; 
 			SetAnzahlBesuche(anzahlBesuche); 
+		}
+
+		~SchulungsTeilnehmer()
+		{
+			Console.WriteLine("Teilnehmer wird gelöscht: " + Vorname + " " + nachname);
+			AnzahlTeilnehmer--; // Wenn ein Teilnehmer gelöscht wird, wird der Zähler verringert
 		}
 
 
