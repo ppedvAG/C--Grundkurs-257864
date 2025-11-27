@@ -12,6 +12,14 @@ namespace Lab10.Fahrzeuge
 
 		public PKW(string name, int maxGeschwindigkeit, double preis, string kennzeichen) : base(name, maxGeschwindigkeit, preis)
 		{
+			if(kennzeichen.Length < 3 || kennzeichen.Length > 8)
+			{
+				throw new KennzeichenFehlerException("Länge des Kennzeichen nicht okay");
+			}
+			if(kennzeichen.Any(c => !char.IsLetterOrDigit(c) && c != '-'))
+			{
+				throw new KennzeichenFehlerException("Ungültige Zeichen im Kennzeichen");
+			}
 			Kennzeichen = kennzeichen;
 		}
 
