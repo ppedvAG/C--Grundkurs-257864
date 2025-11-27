@@ -1,4 +1,4 @@
-﻿namespace Lab06
+﻿namespace Lab09.Fahrzeuge
 {
 	public class Fahrzeug
 	{
@@ -33,7 +33,7 @@
 		}
 
 		// Methoden
-		public string Info()
+		public virtual string Info()
 		{
 			return $"Fahrzeug {Name}: Maximale Geschwindigkeit: {MaxGeschwindigkeit}, " +
 				$"Aktuelle Geschwindigkeit: {AktGeschwindigkeit}, " +

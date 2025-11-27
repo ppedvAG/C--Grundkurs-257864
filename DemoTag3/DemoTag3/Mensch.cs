@@ -22,11 +22,19 @@ namespace DemoTag3
 
 
 		// Mit override kann ich eine Methode überschreiben, die in der Basisklasse als virtual deklariert wurde.
+		//public override string Info()
+		//{
+		//	// mit base. kann ich auf die Basisklasse zugreifen.
+		//	string lebewesenInfo = base.Info().Substring(0, base.Info().Length - 1);
+		//	return $"{lebewesenInfo} und ich heiße {Vorname} {Nachname}.";
+		//}
+
+
+		// Ich muss die Methode Info() implementieren, da sie in der Basisklasse als abstract deklariert wurde.
 		public override string Info()
 		{
-			// mit base. kann ich auf die Basisklasse zugreifen.
-			string lebewesenInfo = base.Info().Substring(0, base.Info().Length - 1);
-			return $"{lebewesenInfo} und ich heiße {Vorname} {Nachname}.";
+			// base.Info(); // ich kann auch die Basisklassenmethode nicht aufrufen, weil die leer ist
+			return $"Mensch: {Vorname} {Nachname}, Alter: {Alter}";
 		}
 
 		//public void alterBearbeiten(int alter)

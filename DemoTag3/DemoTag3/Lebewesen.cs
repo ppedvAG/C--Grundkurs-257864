@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DemoTag3
 {
-	public class Lebewesen
+	// Lebewesen machen wir Abstrakt, damit niemand direkt ein Lebewesen erstellen kann.
+	public abstract class Lebewesen
 	{
 		// protected set bedeutet, dass die Eigenschaft nur innerhalb der Klasse und in abgeleiteten Klassen gesetzt werden kann.
 		public int Alter { get; protected set; }
@@ -19,9 +20,12 @@ namespace DemoTag3
 		}
 
 		// Wenn ich eine Methode als virtual deklariere, kann sie in einer abgeleiteten Klasse überschrieben werden.
-		public virtual string Info()
-		{
-			return $"Ich bin ein Lebewesen im Alter von {Alter} Jahren.";
-		}
+		//public virtual string Info()
+		//{
+		//	return $"Ich bin ein Lebewesen im Alter von {Alter} Jahren.";
+		//}
+
+		// Wenn ich eine Methode als abstract deklariere, MUSS sie in einer abgeleiteten Klasse überschrieben werden.
+		public abstract string Info(); // eine abstrakte Methode hat keine Implementierung
 	}
 }
