@@ -18,7 +18,8 @@ namespace TaschenrechnerZumTesten
 			{
 				case Rechenoperation.Addition:
 					Console.WriteLine("Ergebnis: " + (zahl1 + zahl2));
-					return (zahl1 + zahl2);
+					//return (zahl1 + zahl1); // fehler der getestet wird
+					return zahl1 + zahl2;
 				case Rechenoperation.Subtraktion:
 					Console.WriteLine("Ergebnis: " + (zahl1 - zahl2));
 					return zahl1 - zahl2;
@@ -29,7 +30,7 @@ namespace TaschenrechnerZumTesten
 					if (zahl2 == 0)
 					{
 						Console.WriteLine("Division dur 0 nicht erlaubt");
-						return double.NaN;
+						throw new DivideByZeroException("Division durch 0 ist nicht erlaubt.");
 					}
 					else
 					{

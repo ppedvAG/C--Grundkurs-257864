@@ -8,7 +8,7 @@ namespace Lab10
 {
 	internal class KennzeichenFehlerException: Exception
 	{
-		public KennzeichenFehlerException(string message) : base(message + " Kennzeichen Format nicht Okay.")
+		public KennzeichenFehlerException(string message) : base(message +" 123456")
 		{
 
 		}
