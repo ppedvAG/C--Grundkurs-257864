@@ -144,56 +144,64 @@ namespace DemoTag4
 
 			#region Linq Funkionen & Lamda Ausdrücke
 
-			// Erstellt eine Liste von Startwert mit einer Bestimmten Anzahl von Elementen
-			// (5, 29) -> Start bei 5, 20 Elemente -> 5-25
-			List<int> zahlen = Enumerable.Range(0, 20).ToList(); // Zahlen 0 bis 19
+			//// Erstellt eine Liste von Startwert mit einer Bestimmten Anzahl von Elementen
+			//// (5, 29) -> Start bei 5, 20 Elemente -> 5-25
+			//List<int> zahlen = Enumerable.Range(0, 20).ToList(); // Zahlen 0 bis 19
 
-			// Alle Zahlen ausgeben mit einer Lambda Funktion
-			zahlen.ForEach(e => Console.Write(e + " "));
-			Console.WriteLine();
+			//// Alle Zahlen ausgeben mit einer Lambda Funktion
+			//zahlen.ForEach(e => Console.Write(e + " "));
+			//Console.WriteLine();
 
-			// zahlen.ForEach ist gleich wie eine foreach Schleife
-			//foreach (int e in zahlen)
-			//{
-			//	Console.Write(e + " ");
-			//}
+			//// zahlen.ForEach ist gleich wie eine foreach Schleife
+			////foreach (int e in zahlen)
+			////{
+			////	Console.Write(e + " ");
+			////}
 
-			// Einfache Linq Funktionen die einen Wert zurückgeben und keine Collection:
+			//// Einfache Linq Funktionen die einen Wert zurückgeben und keine Collection:
 
-			Console.WriteLine(zahlen.Average()); // Durchschitt
-			Console.WriteLine(zahlen.Min()); // Minimum
-			Console.WriteLine(zahlen.Max()); // Maximum
-			Console.WriteLine(zahlen.Sum()); // Summe
+			//Console.WriteLine(zahlen.Average()); // Durchschitt
+			//Console.WriteLine(zahlen.Min()); // Minimum
+			//Console.WriteLine(zahlen.Max()); // Maximum
+			//Console.WriteLine(zahlen.Sum()); // Summe
 
-			Console.WriteLine(zahlen.First()); // Erstes Element
-			Console.WriteLine(zahlen.FirstOrDefault()); // Erstes Element oder Standardwert (0 für int)
-			Console.WriteLine(zahlen.Last()); // Letztes Element
-			Console.WriteLine(zahlen.LastOrDefault()); // Letztes Element oder Standardwert (0 für int)
+			//Console.WriteLine(zahlen.First()); // Erstes Element
+			//Console.WriteLine(zahlen.FirstOrDefault()); // Erstes Element oder Standardwert (0 für int)
+			//Console.WriteLine(zahlen.Last()); // Letztes Element
+			//Console.WriteLine(zahlen.LastOrDefault()); // Letztes Element oder Standardwert (0 für int)
 
-			Console.WriteLine(zahlen.Single(e => e == 2)); // Einzelnes Element, das die Bedingung erfüllt (2)
-			Console.WriteLine(zahlen.SingleOrDefault(e => e == 100)); // Einzelnes Element oder Standardwert (0 für int), wenn nicht gefunden
+			//Console.WriteLine(zahlen.Single(e => e == 2)); // Einzelnes Element, das die Bedingung erfüllt (2)
+			//Console.WriteLine(zahlen.SingleOrDefault(e => e == 100)); // Einzelnes Element oder Standardwert (0 für int), wenn nicht gefunden
 
-			// Komplexere Linq Funktionen die eine Collection zurückgeben:
+			//// Komplexere Linq Funktionen die eine Collection zurückgeben:
 
-			// Liste der Countries aus der Json Datei laden
-			string jsonFilePath = "C:\\Users\\de2\\OneDrive - ppedv AG\\Anlagen\\Schulungsunterlagen\\C# Grundkurs\\C--Grundkurs-257864\\DemoTag4\\DemoTag4\\Data\\PopulationData.json";
-			string jsonContent = File.ReadAllText(jsonFilePath);
-			List<Country> countries = new List<Country> (JsonSerializer.Deserialize<Dictionary<string, Country>>(jsonContent).Values);
+			//// Liste der Countries aus der Json Datei laden
+			//string jsonFilePath = "C:\\Users\\de2\\OneDrive - ppedv AG\\Anlagen\\Schulungsunterlagen\\C# Grundkurs\\C--Grundkurs-257864\\DemoTag4\\DemoTag4\\Data\\PopulationData.json";
+			//string jsonContent = File.ReadAllText(jsonFilePath);
+			//List<Country> countries = new List<Country> (JsonSerializer.Deserialize<Dictionary<string, Country>>(jsonContent).Values);
 
 
-			// Alle Countries mit einer Population über 100 Millionen
-			//Console.WriteLine("Countries mit Population über 100 Millionen: ");
-			//countries.Where(e => e.Population > 100_000_000).ToList().ForEach(e => Console.WriteLine(e.Name + ": " + e.Population));
+			//// Alle Countries mit einer Population über 100 Millionen
+			////Console.WriteLine("Countries mit Population über 100 Millionen: ");
+			////countries.Where(e => e.Population > 100_000_000).ToList().ForEach(e => Console.WriteLine(e.Name + ": " + e.Population));
 
-			// Countries sortiert nach Population aufsteigend
-			//Console.WriteLine("Countries sortiert nach Population aufsteigend: ");
-			//countries.OrderBy(e => e.Population).ToList().ForEach(e=> Console.WriteLine(e.Name + ": " + e.Population));
+			//// Countries sortiert nach Population aufsteigend
+			////Console.WriteLine("Countries sortiert nach Population aufsteigend: ");
+			////countries.OrderBy(e => e.Population).ToList().ForEach(e=> Console.WriteLine(e.Name + ": " + e.Population));
 
-			// Welches Countrys haben eine Population größer als der Durchschnitt aller Countries
-			Console.WriteLine("Countries mit Population größer als der Durchschnitt: ");
-			double durchschnittPopulation = countries.Average(e => e.Population);
-			countries.Where(e=> e.Population > durchschnittPopulation).ToList().ForEach(e => Console.WriteLine(e.Name + ": " + e.Population));
+			//// Welches Countrys haben eine Population größer als der Durchschnitt aller Countries
+			//Console.WriteLine("Countries mit Population größer als der Durchschnitt: ");
+			//double durchschnittPopulation = countries.Average(e => e.Population);
+			//countries.Where(e=> e.Population > durchschnittPopulation).ToList().ForEach(e => Console.WriteLine(e.Name + ": " + e.Population));
 			#endregion
+
+			#region Erweiterungsmethoden
+			// Variante mit normer Methode
+			Console.WriteLine(Erweiterungsmethoden.GetQuersumme(685140));
+			// Variante mit Erweiterungsmethode
+			Console.WriteLine(685140.GetQuersumme()); // 6 + 8 + 5 + 1 + 4 + 0 = 24
+			#endregion
+
 		}
 	}
 }
